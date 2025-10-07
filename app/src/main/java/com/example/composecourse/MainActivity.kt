@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
@@ -49,7 +51,14 @@ fun MyApp(
                 shouldShowOnboarding = false
             }
 
-            false -> Greetings(names = NAMES)
+            false -> {
+                val names = arrayListOf<String>().apply {
+                    repeat(10) {
+                        addAll(NAMES)
+                    }
+                }
+                Greetings(names = names)
+            }
         }
     }
 }
@@ -80,8 +89,8 @@ fun Greetings(
     modifier: Modifier = Modifier,
     names: List<String>
 ) {
-    Column(modifier = modifier.padding(4.dp)) {
-        names.forEach { name ->
+    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
+        items(items = names) { name ->
             Greeting(name)
         }
     }
