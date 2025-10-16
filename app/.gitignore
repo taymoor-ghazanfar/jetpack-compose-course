@@ -12,13 +12,13 @@ local.properties
 captures/
 .externalNativeBuild/
 .cxx/
-*.aab
 *.apk
-output-metadata.json
+output.json
 
 # IntelliJ
 *.iml
 .idea/
+.kotlin/
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
@@ -27,8 +27,7 @@ render.experimental.xml
 *.jks
 *.keystore
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
-
 # Android Profiling
 *.hprof
+.idea
+app/release
