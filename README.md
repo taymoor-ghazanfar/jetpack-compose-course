@@ -1,16 +1,19 @@
-# Theming in Compose with Material 3 Codelab
+# Compose Animation Codelab
 
-This folder contains the source code for
-the [Theming in Compose with Material 3 Codelab](https://developer.android.com/codelabs/jetpack-compose-theming)
+This folder contains the source code for the
+[Compose Animation](https://developer.android.com/codelabs/jetpack-compose-animation)
+codelab.
 
-## Screenshots
+In this codelab, you will learn how to use some Animation APIs in Jetpack Compose.
 
-![Theming states](screenshots/theming.png "Theming states")
+## Screenshot
+
+![Screenshot](screenshots/app.png)
 
 ## License
 
 ```
-Copyright 2022 The Android Open Source Project
+Copyright 2021 The Android Open Source Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

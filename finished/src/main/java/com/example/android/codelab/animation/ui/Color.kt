@@ -14,21 +14,15 @@
  * limitations under the License.
  */
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.13.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.20"
-        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.2.20"
-    }
-}
+package com.example.android.codelab.animation.ui
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+import androidx.compose.ui.graphics.Color
+
+val Amber600 = Color(0xFFFFB300)
+
+val Melon = Color(0xFFfec5bb)
+val PaleDogwood = Color(0xFFfcd5ce)
+val Seashell = Color(0xFFf8edeb)
+val Peach = Color(0xFFfec89a)
+val Green = Color(0xFFd8e2dc)
+val GreenLight = Color(0xFFEBF1EE)
