@@ -14,21 +14,24 @@
  * limitations under the License.
  */
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.13.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.20"
-        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.2.20"
-    }
-}
+package com.example.android.codelab.animation
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import com.example.android.codelab.animation.ui.AnimationCodelabTheme
+import com.example.android.codelab.animation.ui.home.Home
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            AnimationCodelabTheme {
+                Home()
+            }
+        }
     }
 }

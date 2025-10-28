@@ -14,21 +14,24 @@
  * limitations under the License.
  */
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.13.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.20"
-        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.2.20"
-    }
-}
+package com.example.android.codelab.animation.ui
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+
+@Composable
+fun AnimationCodelabTheme(content: @Composable () -> Unit) {
+    val colors = lightColorScheme(
+        primary = Melon,
+        primaryContainer = PaleDogwood,
+        onPrimary = Color.Black,
+        secondary = Peach,
+        onSecondary = Color.Black
+    )
+    MaterialTheme(
+        colorScheme = colors,
+        content = content
+    )
 }
