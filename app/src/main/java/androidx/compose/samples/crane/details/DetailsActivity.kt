@@ -118,6 +118,7 @@ fun DetailsScreen(
         uiState.cityDetails != null -> {
             DetailsContent(uiState.cityDetails!!, modifier.fillMaxSize())
         }
+
         uiState.isLoading -> {
             Box(modifier.fillMaxSize()) {
                 CircularProgressIndicator(
@@ -126,7 +127,10 @@ fun DetailsScreen(
                 )
             }
         }
-        else -> { onErrorLoading() }
+
+        else -> {
+            onErrorLoading()
+        }
     }
 }
 
