@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Android Open Source Project
+ * Copyright 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,6 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 fun <T> StatementBody(
-    modifier: Modifier = Modifier,
     items: List<T>,
     colors: (T) -> Color,
     amounts: (T) -> Float,
@@ -46,7 +45,7 @@ fun <T> StatementBody(
     circleLabel: String,
     rows: @Composable (T) -> Unit
 ) {
-    Column(modifier = modifier.verticalScroll(rememberScrollState())) {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         Box(Modifier.padding(16.dp)) {
             val accountsProportion = items.extractProportions { amounts(it) }
             val circleColors = items.map { colors(it) }

@@ -1,12 +1,12 @@
-# Navigation in Jetpack Compose Codelab
+# Testing in Jetpack Compose Codelab
 
 This folder contains the source code for the
-[Navigation in Jetpack Compose Codelab](https://developer.android.com/codelabs/jetpack-compose-navigation)
+[Testing in Jetpack Compose Codelab ](https://developer.android.com/codelabs/jetpack-compose-testing)
 codelab.
 
 ## License
 ```
-Copyright 2022 The Android Open Source Project
+Copyright 2021 The Android Open Source Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,4 +20,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-

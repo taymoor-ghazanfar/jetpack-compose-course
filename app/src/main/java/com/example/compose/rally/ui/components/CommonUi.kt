@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Android Open Source Project
+ * Copyright 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,15 +49,8 @@ import java.text.DecimalFormat
  * A row representing the basic information of an Account.
  */
 @Composable
-fun AccountRow(
-    modifier: Modifier = Modifier,
-    name: String,
-    number: Int,
-    amount: Float,
-    color: Color
-) {
+fun AccountRow(name: String, number: Int, amount: Float, color: Color) {
     BaseRow(
-        modifier = modifier,
         color = color,
         title = name,
         subtitle = stringResource(R.string.account_redacted) + AccountDecimalFormat.format(number),
@@ -82,7 +75,6 @@ fun BillRow(name: String, due: String, amount: Float, color: Color) {
 
 @Composable
 private fun BaseRow(
-    modifier: Modifier = Modifier,
     color: Color,
     title: String,
     subtitle: String,
@@ -92,7 +84,7 @@ private fun BaseRow(
     val dollarSign = if (negative) "–$ " else "$ "
     val formattedAmount = formatAmount(amount)
     Row(
-        modifier = modifier
+        modifier = Modifier
             .height(68.dp)
             .clearAndSetSemantics {
                 contentDescription =
@@ -147,11 +139,7 @@ private fun BaseRow(
  */
 @Composable
 private fun AccountIndicator(color: Color, modifier: Modifier = Modifier) {
-    Spacer(
-        modifier
-            .size(4.dp, 36.dp)
-            .background(color = color)
-    )
+    Spacer(modifier.size(4.dp, 36.dp).background(color = color))
 }
 
 @Composable
