@@ -1,10 +1,10 @@
-# Testing in Jetpack Compose Codelab
+# Accessibility in Jetpack Compose Codelab
 
-This folder contains the source code for the
-[Testing in Jetpack Compose Codelab ](https://developer.android.com/codelabs/jetpack-compose-testing)
-codelab.
+This folder contains the source code for
+the [Accessibility in Jetpack Compose Codelab](https://developer.android.com/codelabs/jetpack-compose-accessibility)
 
 ## License
+
 ```
 Copyright 2021 The Android Open Source Project
 
