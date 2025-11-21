@@ -136,7 +136,9 @@ private fun PostMetadata(metadata: Metadata) {
         Image(
             imageVector = Icons.Filled.AccountCircle,
             contentDescription = null,
-            modifier = Modifier.size(40.dp),
+            modifier = Modifier
+                .size(40.dp)
+                .semantics(mergeDescendants = true) {},
             colorFilter = ColorFilter.tint(LocalContentColor.current),
             contentScale = ContentScale.Fit
         )
