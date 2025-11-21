@@ -32,14 +32,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.Typography
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
@@ -50,6 +50,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.FirstBaseline
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
@@ -172,18 +174,23 @@ private fun Paragraph(paragraph: Paragraph) {
                 textStyle = textStyle,
                 paragraphStyle = paragraphStyle
             )
+
             ParagraphType.CodeBlock -> CodeBlockParagraph(
                 text = annotatedString,
                 textStyle = textStyle,
                 paragraphStyle = paragraphStyle
             )
+
             ParagraphType.Header -> {
                 Text(
-                    modifier = Modifier.padding(4.dp),
+                    modifier = Modifier
+                        .padding(4.dp)
+                        .semantics { heading() },
                     text = annotatedString,
                     style = textStyle.merge(paragraphStyle)
                 )
             }
+
             else -> Text(
                 modifier = Modifier.padding(4.dp),
                 text = annotatedString,
@@ -261,17 +268,21 @@ private fun ParagraphType.getTextAndParagraphStyle(): ParagraphStyling {
             textStyle = typography.titleLarge
             trailingPadding = 16.dp
         }
+
         ParagraphType.Text -> {
             textStyle = typography.bodyLarge.copy(lineHeight = 28.sp)
             paragraphStyle = paragraphStyle.copy(lineHeight = 28.sp)
         }
+
         ParagraphType.Header -> {
             textStyle = typography.headlineSmall
             trailingPadding = 16.dp
         }
+
         ParagraphType.CodeBlock -> textStyle = typography.bodyLarge.copy(
             fontFamily = FontFamily.Monospace
         )
+
         ParagraphType.Quote -> textStyle = typography.bodyLarge
         ParagraphType.Bullet -> {
             paragraphStyle = ParagraphStyle(textIndent = TextIndent(firstLine = 8.sp))
@@ -306,6 +317,7 @@ fun Markup.toAnnotatedStringItem(
                 end
             )
         }
+
         MarkupType.Link -> {
             AnnotatedString.Range(
                 typography.bodyLarge.copy(textDecoration = TextDecoration.Underline).toSpanStyle(),
@@ -313,6 +325,7 @@ fun Markup.toAnnotatedStringItem(
                 end
             )
         }
+
         MarkupType.Bold -> {
             AnnotatedString.Range(
                 typography.bodyLarge.copy(fontWeight = FontWeight.Bold).toSpanStyle(),
@@ -320,6 +333,7 @@ fun Markup.toAnnotatedStringItem(
                 end
             )
         }
+
         MarkupType.Code -> {
             AnnotatedString.Range(
                 typography.bodyLarge
