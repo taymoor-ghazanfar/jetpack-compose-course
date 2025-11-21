@@ -18,6 +18,8 @@ package com.example.jetnews.ui.article
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,16 +28,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetnews.R
 import com.example.jetnews.data.posts.PostsRepository
 import com.example.jetnews.data.posts.impl.post3
 import com.example.jetnews.model.Post
@@ -96,7 +98,9 @@ fun ArticleScreen(
                     IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = null
+                            contentDescription = stringResource(
+                                R.string.cd_navigate_up
+                            )
                         )
                     }
                 }
