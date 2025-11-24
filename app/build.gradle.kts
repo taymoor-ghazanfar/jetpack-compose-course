@@ -106,4 +106,6 @@ dependencies {
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+
+    implementation("androidx.compose.runtime:runtime-tracing")
 }
