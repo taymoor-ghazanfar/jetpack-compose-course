@@ -16,7 +16,6 @@
 package com.example.android.wearable.composeforwearos
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Message
 import androidx.compose.material.icons.rounded.Phone
@@ -40,10 +39,12 @@ import androidx.wear.compose.material3.Button
 import androidx.wear.compose.material3.FilledIconButton
 import androidx.wear.compose.material3.Icon
 import androidx.wear.compose.material3.ListHeader
+import androidx.wear.compose.material3.MaterialTheme
 import androidx.wear.compose.material3.ScreenScaffold
 import androidx.wear.compose.material3.SurfaceTransformation
 import androidx.wear.compose.material3.SwitchButton
 import androidx.wear.compose.material3.Text
+import androidx.wear.compose.material3.lazy.rememberTransformationSpec
 import androidx.wear.compose.ui.tooling.preview.WearPreviewDevices
 import com.example.android.wearable.composeforwearos.theme.WearAppTheme
 import com.google.android.horologist.compose.layout.ColumnItemType
@@ -51,6 +52,10 @@ import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadd
 
 /* Contains individual Wear OS demo composables for the code lab. */
 
+
+/* Contains individual Wear OS demo composables for the code lab. */
+
+// TODO: Create a Icon Button Composable
 @Composable
 fun IconButtonExample(
     modifier: Modifier = Modifier,
@@ -66,49 +71,56 @@ fun IconButtonExample(
     }
 }
 
+// TODO: Create a Text Composable
 @Composable
-fun TextExample(
-    modifier: Modifier = Modifier
-) {
-    ListHeader {
+fun TextExample(modifier: Modifier = Modifier, transformation: SurfaceTransformation) {
+    ListHeader(
+        modifier = modifier,
+        transformation = transformation,
+    ) {
         Text(
-            modifier = modifier
-                .fillMaxWidth(),
+            modifier = modifier,
             textAlign = TextAlign.Center,
             text = stringResource(R.string.hello_compose_codelab),
         )
     }
 }
 
+// TODO: Create a Card (specifically, an AppCard) Composable
 @Composable
 fun CardExample(
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
+    transformation: SurfaceTransformation,
 ) {
     AppCard(
         modifier = modifier,
+        transformation = transformation,
         appImage = {
             Icon(
                 imageVector = Icons.AutoMirrored.Rounded.Message,
                 contentDescription = "triggers open message action",
-                modifier = iconModifier
+                modifier = iconModifier,
             )
         },
         appName = { Text("Messages") },
         time = { Text("12m") },
         title = { Text("Kim Green") },
-        onClick = { /* ... */ }
+        onClick = { /* ... */ },
     ) {
         Text("On my way!")
     }
 }
 
+// TODO: Create a Chip Composable
 @Composable
 fun ChipExample(
     modifier: Modifier = Modifier,
+    transformation: SurfaceTransformation,
 ) {
     Button(
         modifier = modifier,
+        transformation = transformation,
         onClick = { /* ... */ },
         icon = {
             Icon(
@@ -125,11 +137,12 @@ fun ChipExample(
     }
 }
 
+// TODO: Create a Switch Chip Composable
 @Composable
-fun SwitchChipExample(modifier: Modifier = Modifier) {
+fun SwitchChipExample(modifier: Modifier = Modifier, transformation: SurfaceTransformation) {
     var checked by remember { mutableStateOf(true) }
     SwitchButton(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier,
         label = {
             Text(
                 "Sound",
@@ -152,6 +165,7 @@ fun StartOnlyTextComposables() {
     Text(
         modifier = Modifier.fillMaxSize(),
         textAlign = TextAlign.Center,
+        color = MaterialTheme.colorScheme.primary,
         text = stringResource(R.string.hello_world_starter),
     )
 }
@@ -215,9 +229,12 @@ fun TextExamplePreview() {
                 scrollState = listState,
                 contentPadding = contentPadding,
             ) { contentPadding ->
+
                 TransformingLazyColumn(state = listState, contentPadding = contentPadding) {
                     item {
-                        TextExample()
+                        TextExample(
+                            transformation = SurfaceTransformation(rememberTransformationSpec())
+                        )
                     }
                 }
             }
@@ -240,7 +257,9 @@ fun CardExamplePreview() {
             ) { contentPadding ->
                 TransformingLazyColumn(state = listState, contentPadding = contentPadding) {
                     item {
-                        CardExample()
+                        CardExample(
+                            transformation = SurfaceTransformation(rememberTransformationSpec())
+                        )
                     }
                 }
             }
@@ -263,7 +282,9 @@ fun ChipPreview() {
             ) { contentPadding ->
                 TransformingLazyColumn(state = listState, contentPadding = contentPadding) {
                     item {
-                        ChipExample()
+                        ChipExample(
+                            transformation = SurfaceTransformation(rememberTransformationSpec())
+                        )
                     }
                 }
             }
@@ -286,7 +307,9 @@ fun SwitchChipExamplePreview() {
             ) { contentPadding ->
                 TransformingLazyColumn(state = listState, contentPadding = contentPadding) {
                     item {
-                        SwitchChipExample()
+                        SwitchChipExample(
+                            transformation = SurfaceTransformation(rememberTransformationSpec())
+                        )
                     }
                 }
             }
