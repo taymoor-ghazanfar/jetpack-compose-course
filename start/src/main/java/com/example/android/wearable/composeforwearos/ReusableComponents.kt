@@ -41,6 +41,7 @@ import androidx.wear.compose.material3.FilledIconButton
 import androidx.wear.compose.material3.Icon
 import androidx.wear.compose.material3.ListHeader
 import androidx.wear.compose.material3.ScreenScaffold
+import androidx.wear.compose.material3.SurfaceTransformation
 import androidx.wear.compose.material3.SwitchButton
 import androidx.wear.compose.material3.Text
 import androidx.wear.compose.ui.tooling.preview.WearPreviewDevices
@@ -66,7 +67,9 @@ fun IconButtonExample(
 }
 
 @Composable
-fun TextExample(modifier: Modifier = Modifier) {
+fun TextExample(
+    modifier: Modifier = Modifier
+) {
     ListHeader {
         Text(
             modifier = modifier
