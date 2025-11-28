@@ -86,8 +86,7 @@ fun WearApp() {
             verticalArrangement = Arrangement.Center,
             state = listState,
         ) {
-            // TODO: Remove item; for beginning only.
-            item { StartOnlyTextComposables() }
+            
 
             /* ******************* Part 1: Simple composables ******************* */
             item { IconButtonExample() }

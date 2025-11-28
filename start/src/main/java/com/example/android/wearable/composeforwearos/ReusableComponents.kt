@@ -16,16 +16,21 @@
 package com.example.android.wearable.composeforwearos
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Message
+import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
 import androidx.wear.compose.foundation.lazy.rememberTransformingLazyColumnState
+import androidx.wear.compose.material3.AppCard
 import androidx.wear.compose.material3.AppScaffold
-import androidx.wear.compose.material3.Button
+import androidx.wear.compose.material3.FilledIconButton
+import androidx.wear.compose.material3.Icon
+import androidx.wear.compose.material3.ListHeader
 import androidx.wear.compose.material3.ScreenScaffold
 import androidx.wear.compose.material3.Text
 import androidx.wear.compose.ui.tooling.preview.WearPreviewDevices
@@ -35,16 +40,31 @@ import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadd
 
 /* Contains individual Wear OS demo composables for the code lab. */
 
-// TODO: Create a Icon Button Composable
 @Composable
 fun IconButtonExample(
     modifier: Modifier = Modifier,
 ) {
+    FilledIconButton(
+        onClick = { /* ... */ },
+        modifier = modifier,
+    ) {
+        Icon(
+            imageVector = Icons.Rounded.Phone,
+            contentDescription = "triggers phone action",
+        )
+    }
 }
 
-// TODO: Create a Text Composable
 @Composable
 fun TextExample(modifier: Modifier = Modifier) {
+    ListHeader{
+        Text(
+            modifier = modifier
+                .fillMaxWidth(),
+            textAlign = TextAlign.Center,
+            text = stringResource(R.string.hello_compose_codelab),
+        )
+    }
 }
 
 // TODO: Create a Card (specifically, an AppCard) Composable
@@ -53,6 +73,22 @@ fun CardExample(
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
 ) {
+    AppCard(
+        modifier = modifier,
+        appImage = {
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.Message,
+                contentDescription = "triggers open message action",
+                modifier = iconModifier
+            )
+        },
+        appName = { Text("Messages") },
+        time = { Text("12m") },
+        title = { Text("Kim Green") },
+        onClick = { /* ... */ }
+    ) {
+        Text("On my way!")
+    }
 }
 
 // TODO: Create a Chip Composable
