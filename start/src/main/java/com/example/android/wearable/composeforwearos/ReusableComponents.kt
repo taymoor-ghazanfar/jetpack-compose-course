@@ -20,18 +20,28 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Message
 import androidx.compose.material.icons.rounded.Phone
+import androidx.compose.material.icons.rounded.SelfImprovement
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
 import androidx.wear.compose.foundation.lazy.rememberTransformingLazyColumnState
 import androidx.wear.compose.material3.AppCard
 import androidx.wear.compose.material3.AppScaffold
+import androidx.wear.compose.material3.Button
 import androidx.wear.compose.material3.FilledIconButton
 import androidx.wear.compose.material3.Icon
 import androidx.wear.compose.material3.ListHeader
 import androidx.wear.compose.material3.ScreenScaffold
+import androidx.wear.compose.material3.SwitchButton
 import androidx.wear.compose.material3.Text
 import androidx.wear.compose.ui.tooling.preview.WearPreviewDevices
 import com.example.android.wearable.composeforwearos.theme.WearAppTheme
@@ -57,7 +67,7 @@ fun IconButtonExample(
 
 @Composable
 fun TextExample(modifier: Modifier = Modifier) {
-    ListHeader{
+    ListHeader {
         Text(
             modifier = modifier
                 .fillMaxWidth(),
@@ -67,7 +77,6 @@ fun TextExample(modifier: Modifier = Modifier) {
     }
 }
 
-// TODO: Create a Card (specifically, an AppCard) Composable
 @Composable
 fun CardExample(
     modifier: Modifier = Modifier,
@@ -91,16 +100,47 @@ fun CardExample(
     }
 }
 
-// TODO: Create a Chip Composable
 @Composable
 fun ChipExample(
     modifier: Modifier = Modifier,
 ) {
+    Button(
+        modifier = modifier,
+        onClick = { /* ... */ },
+        icon = {
+            Icon(
+                imageVector = Icons.Rounded.SelfImprovement,
+                contentDescription = "triggers meditation action",
+            )
+        },
+    ) {
+        Text(
+            text = "5 minute Meditation",
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+    }
 }
 
-// TODO: Create a Chip with a switch Composable
 @Composable
 fun SwitchChipExample(modifier: Modifier = Modifier) {
+    var checked by remember { mutableStateOf(true) }
+    SwitchButton(
+        modifier = modifier.fillMaxWidth(),
+        label = {
+            Text(
+                "Sound",
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.semantics {
+                    this.contentDescription = if (checked) "On" else "Off"
+                },
+            )
+        },
+        checked = checked,
+        onCheckedChange = { checked = it },
+        enabled = true,
+    )
 }
 
 // Function only used as a demo for when you start the code lab (removed as step 1).

@@ -86,7 +86,7 @@ fun WearApp() {
             verticalArrangement = Arrangement.Center,
             state = listState,
         ) {
-            
+
 
             /* ******************* Part 1: Simple composables ******************* */
             item { IconButtonExample() }
